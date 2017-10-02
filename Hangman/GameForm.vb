@@ -44,7 +44,7 @@ Public Class GameForm
         numTotalGuesses = 0
         'Enabled the guess letter textbox and give it the focus
         txtGuess.Enabled = True
-        txtGuess.Text = ""
+        txtGuess.Clear()
         txtGuess.Focus()
         'show an empty hangman gallows
         pBoxHangman.ImageLocation = "Images\Hangman-0.png"
@@ -58,17 +58,6 @@ Public Class GameForm
         For x As Integer = 0 To strWord.Length - 1
             Panel1.Controls.Item(x).Text = "_"
         Next
-        'message for debugging: Uncomment to use. Just to see that all the controls were set correctly
-        'MessageBox.Show("blnGameStarted = " + blnGameStarted.ToString + Chr(10) + _
-        '                "numWord = " + numWord.ToString + Chr(10) + _
-        '                "numRightGuesses = " + numRightGuesses.ToString + Chr(10) + _
-        '                "numWrongGuesses = " + numWrongGuesses.ToString + Chr(10) + _
-        '                "txtGuess.Enabled = " + txtGuess.Enabled.ToString + Chr(10) + _
-        '                "strWord = " + strWord + Chr(10) + _
-        '                "lblUnitDesc.Text = " + lblUnitDesc.Text, _
-        '                "Empty Values", _
-        '                MessageBoxButtons.OK, _
-        '                MessageBoxIcon.Information)
     End Sub
     Private Sub QuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitToolStripMenuItem.Click
         Application.Exit()
@@ -79,11 +68,6 @@ Public Class GameForm
         lblUnitDesc.Text = ""
         pBoxHangman.ImageLocation = ""
         txtGuess.Text = ""
-        'show the numbers of the word spaces for initial debugging, uncomment to use
-        'This is how I got the labels in order, so I could loop through them to fill in the letters correctly guessed.
-        'For x As Integer = 0 To Panel1.Controls.Count - 1
-        '    Panel1.Controls.Item(x).Text = x.ToString
-        'Next
     End Sub
     Private Sub ClearLetters()
         'clear all the letters for a new game.
@@ -95,27 +79,29 @@ Public Class GameForm
     End Sub
     Private Sub txtGuess_TextChanged(sender As Object, e As EventArgs) Handles txtGuess.TextChanged
         'First see if a new game has bee started
-        If blnGameStarted = True And txtGuess.Text <> "" Then
-            'make input string in textbox a Char Array with one member and convert it to upper case
-            Dim chrArrGuess As Char() = txtGuess.Text.Trim.ToUpper.ToCharArray
-            'Set the current letter guessed to the first letter value of the Guessed letter textbox
-            CurLetterGuess = chrArrGuess(0)
-            'convert guessed letter to ascii character 
-            Dim AsciiGuess As Integer = Asc(CurLetterGuess)
-            'see if it is an uppercase letter of the alphabet
-            If AsciiGuess > 64 And AsciiGuess < 91 Then
-                'character is an uppercase letter of the alpabet, so compare it to the strWord converted to Uppercase
-                numTotalGuesses += 1
-                checkProgress(strWord.ToUpper(), CurLetterGuess)
-            Else
-                'let the user know that they didn't guess a letter
-                MessageBox.Show("Please select a letter of the Alphabet", _
-                        "Not an Alpabetic character", _
-                        MessageBoxButtons.OK, _
-                        MessageBoxIcon.Warning)
-                txtGuess.Focus()
-                txtGuess.SelectAll()
+        If blnGameStarted = True Then
+            If txtGuess.Text <> "" Then  '.Trim
+                'make input string in textbox a Char Array with one member and convert it to upper case
+                Dim chrArrGuess As Char() = txtGuess.Text.ToUpper.ToCharArray  'Trim.
+                'Set the current letter guessed to the first letter value of the Guessed letter textbox
+                CurLetterGuess = chrArrGuess(0)
+                'convert guessed letter to ascii character 
+                Dim AsciiGuess As Integer = Asc(CurLetterGuess)
+                'see if it is an uppercase letter of the alphabet
+                If AsciiGuess > 64 And AsciiGuess < 91 Then
+                    'character is an uppercase letter of the alpabet, so compare it to the strWord converted to Uppercase
+                    numTotalGuesses += 1
+                    checkProgress(strWord.ToUpper(), CurLetterGuess)
+                Else
+                    'let the user know that they didn't guess a letter
+                    MessageBox.Show("Please select a letter of the Alphabet", _
+                            "Not an Alpabetic character", _
+                            MessageBoxButtons.OK, _
+                            MessageBoxIcon.Warning)
+                End If
             End If
+            txtGuess.Focus()
+            txtGuess.SelectAll()
         End If
     End Sub
     Private Sub checkProgress(ByVal Uword As String, ByVal ChrGuess As Char)

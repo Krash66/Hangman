@@ -246,9 +246,12 @@ Partial Class GameForm
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.pBoxHangman)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MaximizeBox = False
         Me.Name = "GameForm"
         Me.ShowIcon = False
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "                                              Hangman Game"
         Me.MenuStrip1.ResumeLayout(False)

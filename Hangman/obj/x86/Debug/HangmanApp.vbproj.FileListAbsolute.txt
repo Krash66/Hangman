@@ -33,3 +33,10 @@ C:\Users\Tom\Documents\Visual Studio 2012\Projects\Hangman\Hangman\obj\x86\Debug
 C:\Users\Tom\Documents\Visual Studio 2012\Projects\Hangman\Hangman\obj\x86\Debug\Hangman.xml
 C:\Users\Tom\Documents\Visual Studio 2012\Projects\Hangman\Hangman\obj\x86\Debug\Hangman.pdb
 C:\Users\Tom\Documents\Visual Studio 2012\Projects\Hangman\Hangman\obj\x86\Debug\HangmanApp.vbprojResolveAssemblyReference.cache
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-0.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-1.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-2.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-3.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-4.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-5.png
+C:\Users\Tom\Documents\Visual Studio 2010\Projects\Hangman\Hangman\bin\Debug\Images\Hangman-6.png
